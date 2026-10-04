@@ -119,3 +119,20 @@ The prototype uses selected reference images. Attribution and case study content
 Adopt the initial prototype as the starting point for the website: charcoal surfaces, bronze accents, serif headings, project imagery, and a restrained fantasy tone. Retain the homepage, project overviews, and case study presentation as the basis for further development.
 
 The preceding proposal is retained as history and is now approved through this decision. Case study copy and attribution remain preliminary; this approval does not finalize the content or authorize public deployment. Future layout revisions will be recorded separately.
+
+## DEC-004 — Root structure and branch-based publishing
+
+**Date:** 4 October 2026
+**Status:** Active
+**Approval:** The user explicitly requested moving the website to the repository root and using Deploy from a branch.
+**Scope:** Source organization and GitHub Pages publishing.
+
+### Decision
+
+Keep `index.html`, `styles.css`, `app.js`, and `assets/` at the repository root. Move the site README to the root, remove the custom Pages workflow, and add `.nojekyll` for plain static delivery. Configure GitHub Pages to publish from `main` and `/ (root)`.
+
+This supersedes the prototype's `site/dist/` organization and the custom deployment workflow. Historical entries retain their original paths. The visual direction in DEC-003 remains active. Original reference materials remain local and ignored by Git.
+
+### Rationale
+
+The website has no build step. A root-level static layout keeps publishing straightforward and avoids an unnecessary output directory or custom workflow.
