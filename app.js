@@ -1,15 +1,77 @@
 const home = document.getElementById('home-view');
 const detail = document.getElementById('detail-view');
+
+// Paths are relative to index.html, including when hosted at /gamedev/.
 const pages = {
-avernus: `<div class="detail"><a class="back text-link" href="#projects">Back to selected work</a><p class="eyebrow">AVERNUS · TABLETOP RPG DESIGN</p><h1>Personal stories woven into a world in crisis.</h1><p class="detail-lead">A campaign adaptation exploring interconnected quests, player approaches, and the mechanics of travelling through Avernus.</p><div class="detail-meta"><span>Role: campaign adaptation & RPG systems design</span><span>Format: tabletop campaign and design documents</span></div><div class="detail-grid"><aside>PROJECT OVERVIEW</aside><div><section><h2>Scope & contribution</h2><p>Based on the published D&D adventure, this project develops playable interactions and resolution details for a specific group of players. The source adventure provides the setting and high-level situations; the portfolio examines the author's adaptations and design decisions.</p></section><div class="case-list"><a class="case-item" href="#knucklebone"><p class="eyebrow">QUEST & CONTENT DESIGN</p><h3>Fort Knucklebone</h3><p>Optional interactions connect NPC problems, reputation, and negotiation outcomes.</p><span class="text-link">Read the initial case study</span></a><div class="case-item"><p class="eyebrow">REGION & QUEST STRUCTURE</p><h3>Hellturel</h3><p>Personal motivations meet the needs of a city in crisis. Case study in preparation.</p></div><div class="case-item"><p class="eyebrow">EXPLORATION SYSTEMS</p><h3>Avernus hexcrawl</h3><p>Travel activities, terrain, navigation, and resource pressure. Case study in preparation.</p></div></div><figure class="figure"><img src="assets/avernus-map.jpg" alt="Avernus hexcrawl map"><figcaption>Reference map from the campaign design archive. Source attribution will accompany the final case study.</figcaption></figure></div></div></div>`,
-stormwreck: `<div class="detail"><a class="back text-link" href="#projects">Back to selected work</a><p class="eyebrow">STORMWRECK · SYSTEMS DESIGN & UNREAL</p><h1>Make the journey a player decision.</h1><p class="detail-lead">An exploration system connecting travel speed, terrain hazards, party activities, and encounters grounded in the island's history.</p><div class="detail-meta"><span>Role: systems designer & prototype developer</span><span>Status: in development</span><span>Tools: Unreal Engine · C++ · Blueprints</span></div><div class="detail-grid"><aside>DESIGN & IMPLEMENTATION</aside><div><section><h2>The exploration problem</h2><p>The design aims to make travel a sequence of choices: where to go, how quickly to move, and how to divide the group's attention between navigation, safety, and discovery.</p><div class="flow"><div><small>01 / CHOOSE</small><strong>Route & speed</strong><p>Terrain and travel pace shape the risks ahead.</p></div><div><small>02 / PREPARE</small><strong>Party activities</strong><p>Characters allocate attention and support.</p></div><div><small>03 / RESOLVE</small><strong>Consequences</strong><p>Resolve hazards and discover narrative encounters.</p></div></div></section><section><h2>Encounters with context</h2><p>The encounter generator combines terrain-specific creatures, their behaviour, and draconic context. The goal is to create situations players can interpret and respond to.</p><figure class="figure"><img src="assets/encounter-flow.jpg" alt="Creature generator flow: choose terrain, roll creatures, behaviour, and dragon power"><figcaption>Creature generator flow from the design documentation; terminology will be aligned with the selected final version.</figcaption></figure></section><section><h2>From rules to a prototype</h2><p>The Unreal prototype is being developed around a hex-based travel map and explorable locations. A future implementation case study will pair design decisions with a recorded demonstration and selected code.</p><p>The documented system and the implemented prototype will be presented separately, with their current scope made explicit.</p></section></div></div></div>`,
-knucklebone: `<div class="detail"><a class="back text-link" href="#avernus">Back to Avernus</a><p class="eyebrow">AVERNUS · INITIAL CASE STUDY</p><h1>Fort Knucklebone:<br>small actions, connected consequences.</h1><p class="detail-lead">Developing high-level quest situations into playable interactions within a social hub.</p><div class="detail-meta"><span>Focus: quest interactions & negotiation</span><span>Source: published adventure adapted for a tabletop campaign</span></div><div class="detail-grid"><aside>CONTEXT<br>DESIGN<br>EXAMPLE<br>REFLECTION</aside><div><section><h2>Context & contribution</h2><p>The published adventure describes the situations and high-level consequences of helping the fort's inhabitants. The author's contribution is the description and resolution detail needed to run those situations at the table.</p></section><section><h2>Connect optional content to progression</h2><p>The preparation links helping inhabitants to respect with Maggie and improved negotiation outcomes. Players can engage with the hub's problems through different skills and approaches.</p></section><section><h2>Example: Barnabas's missing tooth</h2><p>Barnabas wants a tooth taken by the redcaps returned. The preparation provides ways to investigate and retrieve it, with different risks.</p><div class="flow"><div><small>OBSERVE</small><strong>Read the situation</strong><p>Watch the redcaps passing the tooth between them.</p></div><div><small>APPROACH</small><strong>Choose a method</strong><p>Attempt theft, interrogation, or direct confrontation.</p></div><div><small>CONSEQUENCE</small><strong>Change the stakes</strong><p>Success earns respect with Maggie; confrontation risks escalation.</p></div></div></section><section><h2>Evidence & reflection</h2><p>This initial account is grounded in session preparation. The final case study will compare the adaptation with the source adventure and document which approaches players took, what happened, and what the author learned.</p></section></div></div></div>`
+  avernus: { path: 'pages/avernus/index.html', title: 'Avernus' },
+  illyria: { path: 'pages/avernus/illyria-house.html', title: 'Illyria’s House' },
+  cassius: { path: 'pages/avernus/cassius-burgal.html', title: 'Cassius Burgal' },
+  knucklebone: { path: 'pages/avernus/fort-knucklebone.html', title: 'Fort Knucklebone' },
+  stormwreck: { path: 'pages/stormwreck/index.html', title: 'Stormwreck' }
 };
-function render() {
- const key = location.hash.slice(1);
- if (pages[key]) { home.hidden = true; detail.hidden = false; detail.innerHTML = pages[key]; window.scrollTo(0,0); }
- else { home.hidden = false; detail.hidden = true; detail.innerHTML = ''; if(key) requestAnimationFrame(() => document.getElementById(key)?.scrollIntoView()); }
- document.title = pages[key] ? `${key === 'knucklebone' ? 'Fort Knucklebone' : key === 'avernus' ? 'Avernus' : 'Stormwreck'} — Guilherme Araújo` : 'Guilherme Araújo — RPG & Systems Design';
+const contentCache = new Map();
+let renderVersion = 0;
+
+function showStatus(message, retry = false) {
+  const section = document.createElement('div');
+  section.className = 'detail';
+  const paragraph = document.createElement('p');
+  paragraph.textContent = message;
+  section.append(paragraph);
+  if (retry) {
+    const button = document.createElement('button');
+    button.className = 'button';
+    button.type = 'button';
+    button.textContent = 'Try again';
+    button.addEventListener('click', render);
+    section.append(button);
+  }
+  detail.replaceChildren(section);
 }
+
+async function render() {
+  const version = ++renderVersion;
+  const key = location.hash.slice(1);
+  const page = Object.hasOwn(pages, key) ? pages[key] : null;
+
+  if (!page) {
+    home.hidden = false;
+    detail.hidden = true;
+    detail.replaceChildren();
+    detail.removeAttribute('aria-busy');
+    document.title = 'Guilherme Araújo — RPG & Systems Design';
+    if (key) requestAnimationFrame(() => {
+      if (version === renderVersion) document.getElementById(key)?.scrollIntoView();
+    });
+    return;
+  }
+
+  home.hidden = true;
+  detail.hidden = false;
+  detail.setAttribute('aria-busy', 'true');
+  document.title = `${page.title} — Guilherme Araújo`;
+  window.scrollTo(0, 0);
+  showStatus('Loading case content…');
+
+  try {
+    let content = contentCache.get(page.path);
+    if (content === undefined) {
+      const response = await fetch(page.path);
+      if (!response.ok) throw new Error(`Page request failed: ${response.status}`);
+      content = await response.text();
+      contentCache.set(page.path, content);
+    }
+    // An older request must not replace the user's latest navigation.
+    if (version !== renderVersion) return;
+    detail.innerHTML = content;
+  } catch (error) {
+    if (version !== renderVersion) return;
+    showStatus('This page could not be loaded. Please try again.', true);
+    console.error(error);
+  } finally {
+    if (version === renderVersion) detail.removeAttribute('aria-busy');
+  }
+}
+
 window.addEventListener('hashchange', render);
 render();

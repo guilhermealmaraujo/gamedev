@@ -94,7 +94,7 @@ Translated this work log into English, preserving DEC-001 and its approved struc
 
 ## Next work
 
-Clarify the author's contribution to Fort Knucklebone by comparing the published reference with session preparation, and reconstruct what happened at the table. This analysis will help define the first case study.
+Develop the Avernus background-to-quest case from the source comparison, character backgrounds, session preparations and attributed player recaps. The current content outline is in `docs/portfolio-content-structure.md`. Fort Knucklebone analysis remains supporting research.
 
 ## Layout proposal — First visual prototype
 
@@ -136,3 +136,73 @@ This supersedes the prototype's `site/dist/` organization and the custom deploym
 ### Rationale
 
 The website has no build step. A root-level static layout keeps publishing straightforward and avoids an unnecessary output directory or custom workflow.
+
+## DEC-005 — Avernus starting focus
+
+**Date:** 5 October 2026
+
+**Status:** Active
+
+**Approval:** The user selected the background-to-quest topic, retained Avernus and Stormwreck as the two projects, and requested a revised evidence-based structure.
+
+**Scope:** Editorial starting focus; the detailed outline remains a working proposal.
+
+### Decision
+
+Retain the project-based architecture from DEC-001. Start Avernus with a featured case study about adapting character backgrounds into connected narrative and quest content. Cassius, Illyria's house and Elentir's succession are candidate supporting examples within that case, rather than automatically separate pages. This replaces Fort Knucklebone as the initial editorial priority; it does not discard its research or the exploration/hexcrawl work.
+
+### Working proposal
+
+`docs/portfolio-content-structure.md` describes the proposed project overview, case sections, evidence formats and publication boundaries. These details are open for review and are not presented as individually approved decisions. No website implementation or publication is included in this revision.
+
+### Structure review and editorial preview
+
+The user approved the proposed structure and requested a text/visual preview. The content hierarchy and case outline in `docs/portfolio-content-structure.md` are now approved as a starting point. Individual wording and evidence selection remain drafts. A standalone preview is available in `previews/avernus-backgrounds.html`, with relationship and revelation-sequence diagrams. It does not replace the existing website pages. Browser verification could not be completed because the integrated browser could not reach the local server.
+
+## DEC-006 — Detailed case priority
+
+**Date:** 5 October 2026
+
+**Status:** Active
+
+**Approval:** The user requested Illyria's house first, Fort Knucklebone next, and Cassius later.
+
+### Decision
+
+Keep the wider background-to-quest approach from DEC-005. Prioritize Illyria's house as its first detailed example, followed by Fort Knucklebone. Defer Cassius. This supersedes the earlier recommended example order, not the two-project architecture.
+
+### Preview
+
+Created `previews/illyria-house.html` as a standalone editorial preview with an interaction map, explicit competency explanations, a preparation/recap evidence table and a revelation sequence. It distinguishes planned content from reported play and identifies Elentir's encounter as part of the approach. Copy remains for review; no production page was replaced or deployment performed.
+
+## DEC-007 — Integrate contextualized case studies
+
+**Date:** 5 October 2026
+
+**Status:** Active
+
+**Approval:** The user approved self-contained case context and requested both Illyria and Cassius inside the website.
+
+### Decision and implementation
+
+Add Illyria and Cassius as detailed studies under the Avernus project, each with campaign context, relevant character descriptions, explicit competencies, interaction diagrams and preparation/recap comparisons. The Avernus overview introduces the shared background-to-quest approach and provides the route to future content. This authorizes Cassius integration now, revising its deferred status in DEC-006. Fort Knucklebone remains the next content-development priority.
+
+Replaced the superseded Fort prototype's unsupported originality claims with an accurate case-in-preparation page. Preserve its existing hash route. Future region and hexcrawl content appears as non-clickable preparation/development entries until ready. No commit, push or deployment is included.
+
+## Prototype folder clarification
+
+Renamed `previews/` to `prototypes/` to distinguish earlier standalone drafts from the integrated pages in `app.js`. Historical entries retain their original paths. Relative links within the prototypes remain valid.
+
+## DEC-008 — Separate HTML content from navigation
+
+**Date:** 5 October 2026
+
+**Status:** Active
+
+**Approval:** The user requested a dedicated folder for HTML content and excluded prototypes from the repository.
+
+### Decision
+
+Move project and case-study markup into HTML fragments under `pages/avernus/` and `pages/stormwreck/`. Keep the homepage/shared shell in `index.html` and navigation, loading, caching and failure handling in `app.js`. Preserve existing hash routes and root-relative content conventions for GitHub Pages at `/gamedev/`.
+
+Move standalone prototypes into the already ignored local archive at `reference-material/prototypes/`. Historical log entries preserve prior paths. This supersedes the earlier JavaScript-embedded content and tracked-folder proposal.
