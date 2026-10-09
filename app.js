@@ -7,7 +7,9 @@ const pages = {
   illyria: { path: 'pages/avernus/illyria-house.html', title: 'Illyria’s House' },
   cassius: { path: 'pages/avernus/cassius-burgal.html', title: 'Cassius Burgal' },
   knucklebone: { path: 'pages/avernus/fort-knucklebone.html', title: 'Fort Knucklebone' },
-  stormwreck: { path: 'pages/stormwreck/index.html', title: 'Stormwreck' }
+  stormwreck: { path: 'pages/stormwreck/index.html', title: 'Stormwreck' },
+  'stormwreck-design': { path: 'pages/stormwreck/exploration-design.html', title: 'Stormwreck Exploration Design' },
+  'stormwreck-unreal': { path: 'pages/stormwreck/unreal-prototype.html', title: 'Stormwreck Unreal Prototype' }
 };
 const contentCache = new Map();
 let renderVersion = 0;

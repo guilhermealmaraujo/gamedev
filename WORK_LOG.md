@@ -206,3 +206,9 @@ Renamed `previews/` to `prototypes/` to distinguish earlier standalone drafts fr
 Move project and case-study markup into HTML fragments under `pages/avernus/` and `pages/stormwreck/`. Keep the homepage/shared shell in `index.html` and navigation, loading, caching and failure handling in `app.js`. Preserve existing hash routes and root-relative content conventions for GitHub Pages at `/gamedev/`.
 
 Move standalone prototypes into the already ignored local archive at `reference-material/prototypes/`. Historical log entries preserve prior paths. This supersedes the earlier JavaScript-embedded content and tracked-folder proposal.
+
+## Stormwreck document review and project presentation
+
+**Date:** 9 October 2026
+
+Reviewed the text and tables of `Conception of Exploration on Stormwreck Isle 1.2.docx`. Updated the Stormwreck overview with separate design-document and early Unreal entries. Added a design breakdown covering regional structure, travel pace/activities, hazards across exploration/combat and contextual encounter generation. Documented incomplete specifications and example inconsistencies without claiming tested balance. The prototype overview explicitly awaits repository review and demonstration before implementation claims. No commit or deployment performed.
