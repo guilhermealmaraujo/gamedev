@@ -212,3 +212,21 @@ Move standalone prototypes into the already ignored local archive at `reference-
 **Date:** 9 October 2026
 
 Reviewed the text and tables of `Conception of Exploration on Stormwreck Isle 1.2.docx`. Updated the Stormwreck overview with separate design-document and early Unreal entries. Added a design breakdown covering regional structure, travel pace/activities, hazards across exploration/combat and contextual encounter generation. Documented incomplete specifications and example inconsistencies without claiming tested balance. The prototype overview explicitly awaits repository review and demonstration before implementation claims. No commit or deployment performed.
+
+## DEC-009 — Official Stormwreck exploration specification
+
+**Date:** 26 October 2026
+
+**Status:** Active
+
+**Approval:** The user explicitly requested an official Markdown document in the repository, using the updated attached DOCX, with DOCX/PDF retained as references only.
+
+### Decision
+
+`docs/stormwreck/exploration-system.md` is the source of truth for the Dragons of Stormwreck Isle exploration design. Future changes are made and reviewed in Markdown. DOCX/PDF files are reference snapshots; original reference materials remain in the Git-ignored local archive under the established policy.
+
+### Conversion and scope
+
+Converted the updated Downloads DOCX, preserving all 181 nonempty paragraphs and four tables in source order. Translated ten red paragraph markers into explicit pending-revision notices. Added navigation headings, document policy and a revision queue. Applied the author-confirmed speed bands (0–2, 3–6, 7–9), retaining DCs 10, 15 and 25. Other design wording and unresolved inconsistencies remain for later review.
+
+Copied the updated DOCX into `reference-material/stormwreck/`, verifying identical bytes, after preserving the previous copy under `Old Versions/`. No PDF was supplied or generated in this operation. The public website content remains unchanged. No commit or push performed.

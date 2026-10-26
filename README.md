@@ -34,3 +34,10 @@ These are HTML fragments rendered inside the shared page, not standalone documen
 Run the site through a local HTTP server: fetching page fragments may be blocked when opening `index.html` directly with `file://`. GitHub Pages serves them normally without a build step.
 
 Earlier prototypes are stored locally in `reference-material/prototypes/`, which is ignored by Git. They are not part of the website source or deployment.
+
+## Official project design documents
+
+- [Dragons of Stormwreck Isle Exploration System](docs/stormwreck/exploration-system.md) is the authoritative working document for Stormwreck's exploration systems and related content. Make future design changes in this Markdown file.
+- DOCX and PDF documents are reference snapshots only. The updated 1.2 DOCX and the previous reference copy are preserved in the local, Git-ignored `reference-material/stormwreck/` archive.
+- Red text from the updated DOCX is represented by explicit **Pending revision** markers. These mark unresolved design work, not finalized rules.
+- Website case studies are curated presentations and may lag behind the working specification; this conversion does not update them.
