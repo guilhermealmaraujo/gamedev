@@ -30,7 +30,9 @@ O calor lhe trouxe de volta a lembrança dos quatro homens no pátio. Nas noites
 
 ## De volta aos cais de Porto Damali
 
-Em Porto Damali, Ulrich levou a carta de Seressa aos cais que ainda recebiam navios e começou a perguntar pelo escrivão. Ali se ajoelhou para enfaixar o braço de um carregador ferido. O calor voltou, e ele sentiu os dedos do homem relaxarem à medida que a dor cedia. Lembrou-se do carroceiro a quem só pudera oferecer um pedaço de pano na noite da fuga. Ficou ao lado do carregador até que ele conseguisse firmar a mão. Foi ali que reconheceu como um chamado o que sentira diante de Seressa.
+Em Porto Damali, Ulrich levou a carta de Seressa aos cais que ainda recebiam navios e começou a perguntar pelo escrivão. Foi ali que encontrou um carregador ferido, sentado sobre um caixote, com o braço apertado contra o peito. Ulrich se ajoelhou e pediu licença para tocá-lo. Ao pousar a mão sobre a ferida, lembrou-se do carroceiro na noite da fuga. Naquela noite, repetira a oração e esperara em vão. Desta vez, o calor que sentira diante de Seressa passou de sua palma para o braço do homem. Sob seus dedos, a ferida começou a se fechar. O carregador abriu a mão devagar, à espera de uma dor que já havia cedido.
+
+Ulrich ficou um instante de joelhos. Havia anos que suas mãos não curavam ninguém. Ainda se perguntava de onde vinha aquele poder, mas agora entendia por que o calor o fizera reconsiderar a proposta de Seressa. Na sala de mapas, sentira o bastante para aceitar a missão. No cais, com a mão ainda pousada no braço do carregador, reconheceu aquilo como um chamado.
 
 Quem o encontra entre as carroças vê um guerreiro sagrado de cinquenta e cinco anos, com o cansaço de quem passou boa parte da vida na estrada. Durante anos, Ulrich acreditou que, se a lei fosse aplicada com rigor suficiente, chegaria o dia em que todos viveriam em paz. Em nome dessa paz, tomou decisões que ninguém poderia desfazer.
 
